@@ -12,6 +12,8 @@
 </head>
 <body>
 
+<canvas id="bgCanvas" class="bg-canvas" aria-hidden="true"></canvas>
+
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header">
@@ -58,8 +60,8 @@
 
   <section id="about" class="section">
     <div class="container">
-      <h2 class="section-title">About</h2>
-      <p class="section-lede">
+      <h2 class="section-title reveal">About</h2>
+      <p class="section-lede reveal">
         Proficient in network infrastructure management, remote system administration, and
         comprehensive systems monitoring using tools like SolarWinds and SSH. Demonstrated
         expertise in secure system design, network segmentation, and infrastructure deployment,
@@ -70,11 +72,11 @@
 
   <section id="experience" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Experience</h2>
+      <h2 class="section-title reveal">Experience</h2>
 
       <div class="timeline">
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-header">
             <div>
               <h3>System Technician I</h3>
@@ -91,7 +93,7 @@
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-header">
             <div>
               <h3>Founder / Developer</h3>
@@ -107,7 +109,7 @@
           </ul>
         </article>
 
-        <article class="timeline-item">
+        <article class="timeline-item reveal">
           <div class="timeline-header">
             <div>
               <h3>Network Operations Technician</h3>
@@ -130,9 +132,9 @@
 
   <section id="skills" class="section">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
+      <h2 class="section-title reveal">Skills</h2>
       <div class="skills-grid">
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Networking &amp; Infrastructure</h3>
           <ul class="tag-list">
             <li>Network Switch Configuration (SSH)</li>
@@ -144,7 +146,7 @@
             <li>UPS Systems</li>
           </ul>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Infrastructure &amp; Systems</h3>
           <ul class="tag-list">
             <li>Active Directory (ADUC)</li>
@@ -154,7 +156,7 @@
             <li>NetBox Documentation</li>
           </ul>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Tools &amp; Technologies</h3>
           <ul class="tag-list">
             <li>SolarWinds</li>
@@ -164,7 +166,7 @@
             <li>Waitress WSGI</li>
           </ul>
         </div>
-        <div class="skill-card">
+        <div class="skill-card reveal">
           <h3>Security</h3>
           <ul class="tag-list">
             <li>Network Segmentation</li>
@@ -182,8 +184,8 @@
 
   <section id="projects" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Projects</h2>
-      <div class="project-card">
+      <h2 class="section-title reveal">Projects</h2>
+      <div class="project-card reveal">
         <div class="project-card-header">
           <h3>HuntersVlog</h3>
           <a href="https://www.huntersvlog.com" target="_blank" rel="noopener" class="btn btn-small">Visit Site ↗</a>
@@ -200,8 +202,8 @@
 
   <section id="education" class="section">
     <div class="container">
-      <h2 class="section-title">Education</h2>
-      <article class="timeline-item">
+      <h2 class="section-title reveal">Education</h2>
+      <article class="timeline-item reveal">
         <div class="timeline-header">
           <div>
             <h3>Bachelor in Computer Information Systems</h3>
@@ -220,8 +222,8 @@
 
   <section id="contact" class="section section-contact">
     <div class="container contact-inner">
-      <h2 class="section-title">Let's Connect</h2>
-      <p class="section-lede">
+      <h2 class="section-title reveal">Let's Connect</h2>
+      <p class="section-lede reveal">
         Open to Network Administrator and Infrastructure opportunities. Feel free to reach out.
       </p>
       <div class="contact-links">
@@ -234,10 +236,12 @@
 
 </main>
 
+<button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+
 <footer class="site-footer">
   <div class="container footer-inner">
     <p>&copy; <span id="year"></span> Kurtis Railton</p>
-    <p><a href="https://www.huntersvlog.com" target="_blank" rel="noopener">huntersvlog.com</a></p>
+    <p><a class="huntersvlogFoot" href="https://www.huntersvlog.com" target="_blank" rel="noopener">huntersvlog.com</a></p>
   </div>
 </footer>
 

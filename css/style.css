@@ -37,11 +37,19 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--bg);
   color: var(--text);
   font-family: var(--font-sans);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+
+.bg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  background: var(--bg);
+  pointer-events: none;
 }
 
 .container {
@@ -99,11 +107,28 @@ a:hover { color: var(--accent-hover); }
 }
 
 .nav-links a {
+  position: relative;
   color: var(--text-muted);
   font-size: 0.92rem;
   font-weight: 500;
 }
 .nav-links a:hover { color: var(--text); }
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -6px;
+  height: 2px;
+  background: var(--accent);
+  transition: right 0.25s ease;
+}
+.nav-links a:hover::after,
+.nav-links a.active::after { right: 0; }
+
+.nav-links a.active { color: var(--text); }
+.nav-links .nav-cta::after { content: none; }
 
 .nav-cta {
   background: var(--accent);
@@ -165,7 +190,6 @@ a:hover { color: var(--accent-hover); }
 /* ---------- Hero ---------- */
 .hero {
   padding: 120px 0 80px;
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
 }
 
 .hero-inner { max-width: 760px; }
@@ -214,7 +238,6 @@ a:hover { color: var(--accent-hover); }
 
 /* ---------- Sections ---------- */
 .section { padding: 80px 0; }
-.section-alt { background: var(--bg-alt); }
 
 .section-title {
   font-size: 1.9rem;
@@ -242,6 +265,11 @@ a:hover { color: var(--accent-hover); }
   border-radius: var(--radius);
   padding: 28px 32px;
   box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.timeline-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.08), 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
 .timeline-header {
@@ -300,6 +328,11 @@ a:hover { color: var(--accent-hover); }
   border-radius: var(--radius);
   padding: 24px;
   box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.08), 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
 .skill-card h3 {
@@ -337,6 +370,11 @@ a:hover { color: var(--accent-hover); }
   border-radius: var(--radius);
   padding: 32px;
   box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px rgba(15, 23, 42, 0.08), 0 12px 28px rgba(15, 23, 42, 0.1);
 }
 
 .project-card-header {
@@ -374,18 +412,80 @@ a:hover { color: var(--accent-hover); }
   margin-top: 12px;
 }
 
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Back to top ---------- */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  z-index: 60;
+}
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.back-to-top:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .back-to-top { transition: opacity 0.01s linear; }
+  .timeline-item, .skill-card, .project-card { transition: none; }
+}
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 28px 0;
 }
+
 .footer-inner {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
+  padding-right: 56px;
   color: var(--text-faint);
   font-size: 0.85rem;
+}
+
+.huntersvlogFoot {
+  margin-right: 20px;
 }
 
 /* ---------- Responsive ---------- */
@@ -411,4 +511,13 @@ a:hover { color: var(--accent-hover); }
   .hero { padding: 100px 0 60px; }
   .section { padding: 56px 0; }
   .timeline-item, .project-card { padding: 22px; }
+
+  .back-to-top { width: 40px; height: 40px; right: 16px; bottom: 16px; }
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-right: 0;
+    padding-bottom: 48px;
+  }
 }
