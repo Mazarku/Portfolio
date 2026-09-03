@@ -121,6 +121,7 @@
 /* ---------- Print ---------- */
 @media print {
   .no-print { display: none !important; }
+  .bg-canvas { display: none !important; }
   body { background: #fff; }
   .resume-page { padding: 0; }
   .resume-sheet {
